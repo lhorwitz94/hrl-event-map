@@ -18,13 +18,21 @@ export default function App() {
     <div className="app">
       <header className="app__header">
         <p className="app__eyebrow">HRL &middot; Inaugural 2027 Season</p>
-        <h1 className="app__title">Where the HRL Races</h1>
+        <h1 className="app__title">The next generation of horse racing is here</h1>
         <p className="app__tagline">
           Three iconic tracks. One championship season. Click a highlighted state to see the event.
         </p>
       </header>
 
       <main className="app__main">
+        <a
+          className="app__learn-more"
+          href="https://www.thehrl.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn More
+        </a>
         <USMap onSelectEvent={setSelectedEvent} />
       </main>
 

@@ -61,6 +61,30 @@
 
 /* Map */
 
+.app__learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #402d18;
+  color: #fffae8;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 12px 28px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.app__learn-more:hover {
+  background: #2c1f10;
+  transform: translateY(-2px);
+}
+
+.app__learn-more:active {
+  transform: translateY(0) scale(0.98);
+}
+
 .us-map {
   width: 100%;
   margin-top: 12px;
