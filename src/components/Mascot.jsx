@@ -85,23 +85,71 @@ const Mascot = forwardRef(function Mascot({ initialState }, ref) {
       style={{ left: `${pos.x}%`, top: `${pos.y}%`, transform }}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 100 80" className="mascot__svg">
-        <g stroke={COLORS.tan} strokeWidth="2" strokeLinejoin="round">
-          <path d="M18 44 Q4 40 8 56 Q12 50 20 52 Z" fill={COLORS.accentGold} />
-          <path d="M28 62 L20 78 L28 78 L36 64 Z" fill={COLORS.brown} />
-          <path d="M42 63 L38 78 L46 78 L50 65 Z" fill={COLORS.brown} />
-          <ellipse cx="44" cy="50" rx="27" ry="13" fill={COLORS.brown} />
-          <path d="M56 62 L62 78 L70 78 L62 60 Z" fill={COLORS.brownLight} />
-          <path d="M66 58 L76 74 L83 71 L72 55 Z" fill={COLORS.brownLight} />
-          <path
-            d="M65 42 Q79 30 76 16 Q74 9 67 12 Q69 20 61 27 Q56 34 60 44 Z"
-            fill={COLORS.brown}
-          />
-          <path d="M68 13 L73 4 L75 14 Z" fill={COLORS.brown} />
-          <ellipse cx="47" cy="33" rx="9" ry="12" fill={COLORS.accentGold} />
-          <path d="M43 13 Q50 3 57 13 Z" fill={COLORS.accentGold} />
-        </g>
-        <circle cx="50" cy="17" r="7" fill={COLORS.tan} stroke={COLORS.brown} strokeWidth="1.5" />
+      <svg viewBox="0 0 160 100" className="mascot__svg">
+        {/* tail */}
+        <path
+          d="M22 46 Q0 40 2 24 Q10 34 26 34 Q18 40 22 46 Z"
+          fill={COLORS.tan}
+          stroke={COLORS.brown}
+          strokeWidth="2"
+        />
+        {/* legs, gallop stretch — double-stroked so they read against any state color */}
+        <path d="M45 70 L28 96" stroke={COLORS.tan} strokeWidth="14" strokeLinecap="round" />
+        <path d="M45 70 L28 96" stroke={COLORS.brownLight} strokeWidth="10" strokeLinecap="round" />
+        <path d="M35 68 L15 95" stroke={COLORS.tan} strokeWidth="14" strokeLinecap="round" />
+        <path d="M35 68 L15 95" stroke={COLORS.brown} strokeWidth="10" strokeLinecap="round" />
+        <path d="M85 70 L105 96" stroke={COLORS.tan} strokeWidth="14" strokeLinecap="round" />
+        <path d="M85 70 L105 96" stroke={COLORS.brownLight} strokeWidth="10" strokeLinecap="round" />
+        <path d="M95 68 L118 94" stroke={COLORS.tan} strokeWidth="14" strokeLinecap="round" />
+        <path d="M95 68 L118 94" stroke={COLORS.brown} strokeWidth="10" strokeLinecap="round" />
+        {/* torso */}
+        <ellipse cx="52" cy="58" rx="30" ry="19" fill={COLORS.brown} stroke={COLORS.tan} strokeWidth="3" />
+        {/* neck, crouched low into a racing gallop */}
+        <path d="M78 44 L110 63" stroke={COLORS.tan} strokeWidth="19" strokeLinecap="round" />
+        <path d="M78 44 L110 63" stroke={COLORS.brown} strokeWidth="15" strokeLinecap="round" />
+        {/* head + muzzle + ear */}
+        <ellipse
+          cx="122"
+          cy="68"
+          rx="18"
+          ry="9"
+          fill={COLORS.brown}
+          stroke={COLORS.tan}
+          strokeWidth="3"
+          transform="rotate(28 122 68)"
+        />
+        <ellipse
+          cx="142"
+          cy="80"
+          rx="6"
+          ry="4"
+          fill={COLORS.brown}
+          stroke={COLORS.tan}
+          strokeWidth="2"
+          transform="rotate(28 142 80)"
+        />
+        <path d="M112 55 L114 42 L122 56 Z" fill={COLORS.brown} stroke={COLORS.tan} strokeWidth="2" strokeLinejoin="round" />
+        {/* jockey leg/boot */}
+        <path d="M80 45 L78 65" stroke={COLORS.tan} strokeWidth="13" strokeLinecap="round" />
+        <path d="M80 45 L78 65" stroke={COLORS.brown} strokeWidth="9" strokeLinecap="round" />
+        {/* jockey torso, leaning forward along the neck */}
+        <ellipse
+          cx="93"
+          cy="34"
+          rx="8"
+          ry="14"
+          fill={COLORS.tan}
+          stroke={COLORS.brown}
+          strokeWidth="2"
+          transform="rotate(-34 93 34)"
+        />
+        {/* jockey arm reaching to the reins */}
+        <path d="M99 29 L114 50" stroke={COLORS.tan} strokeWidth="9" strokeLinecap="round" />
+        <path d="M99 29 L114 50" stroke={COLORS.brown} strokeWidth="6" strokeLinecap="round" />
+        {/* jockey head + cap */}
+        <circle cx="108" cy="19" r="8.5" fill={COLORS.tan} stroke={COLORS.brown} strokeWidth="1.5" />
+        <path d="M99 17 A9 9 0 0 1 117 17 Z" fill={COLORS.brown} stroke={COLORS.tan} strokeWidth="2" />
+        <path d="M114 16 L126 19 L114 21 Z" fill={COLORS.brown} stroke={COLORS.tan} strokeWidth="1.5" strokeLinejoin="round" />
       </svg>
     </div>
   )
