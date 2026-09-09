@@ -4,7 +4,7 @@ import { COLORS, getEventByStateName } from '../data/hrlData.js'
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'
 
-export default function USMap({ onSelectEvent }) {
+export default function USMap({ onSelectEvent, children }) {
   const [hoveredState, setHoveredState] = useState(null)
 
   return (
@@ -61,6 +61,7 @@ export default function USMap({ onSelectEvent }) {
           }
         </Geographies>
       </ComposableMap>
+      {children}
     </div>
   )
 }

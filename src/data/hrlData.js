@@ -65,3 +65,7 @@ export const events = [
 export function getEventByStateName(stateName) {
   return events.find((e) => e.stateName === stateName)
 }
+
+export function getEventByState(state) {
+  return events.find((e) => e.state === state)
+}
