@@ -19,23 +19,27 @@
 
 .app__eyebrow {
   margin: 0 0 8px;
+  font-family: 'Space Mono', monospace;
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #c79a45;
 }
 
 .app__title {
   margin: 0;
+  font-family: 'Anton', sans-serif;
   font-size: clamp(28px, 6vw, 42px);
-  font-weight: 900;
-  letter-spacing: -0.5px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: #402d18;
 }
 
 .app__tagline {
   margin: 12px auto 0;
+  font-family: 'Space Mono', monospace;
   font-size: 14px;
   color: #6b5842;
   max-width: 420px;
@@ -54,6 +58,7 @@
 .app__footer {
   margin-top: auto;
   padding-top: 28px;
+  font-family: 'Space Mono', monospace;
   font-size: 11px;
   color: #a3906f;
   text-align: center;
@@ -68,7 +73,8 @@
   background: #402d18;
   color: #fffae8;
   border-radius: 999px;
-  font-weight: 800;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
   font-size: 15px;
   padding: 12px 28px;
   text-decoration: none;
@@ -167,8 +173,9 @@
 
 .event-card__badge {
   display: inline-block;
+  font-family: 'Space Mono', monospace;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #402d18;
@@ -180,21 +187,25 @@
 
 .event-card__track {
   margin: 0 0 4px;
+  font-family: 'Anton', sans-serif;
   font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -0.3px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
   color: #402d18;
 }
 
 .event-card__city {
   margin: 0 0 2px;
+  font-family: 'Space Mono', monospace;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: #6b5842;
 }
 
 .event-card__date {
   margin: 0 0 22px;
+  font-family: 'Space Mono', monospace;
   font-size: 13px;
   color: #a3906f;
 }
@@ -206,7 +217,8 @@
   background: #402d18;
   color: #fffae8;
   border-radius: 999px;
-  font-weight: 800;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
   font-size: 15px;
   padding: 13px 30px;
   text-decoration: none;
