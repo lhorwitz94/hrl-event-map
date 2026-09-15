@@ -6,31 +6,14 @@ import { getEventByState } from './data/hrlData.js'
 import { HOP_ORDER } from './data/mapPoints.js'
 import './App.css'
 
-const ONBOARDING_KEY = 'hrl_onboarding_seen'
-const MASCOT_STATE_KEY = 'hrl_mascot_state'
-
-function loadMascotState() {
-  try {
-    const saved = localStorage.getItem(MASCOT_STATE_KEY)
-    return HOP_ORDER.includes(saved) ? saved : 'CA'
-  } catch {
-    return 'CA'
-  }
-}
-
-function saveMascotState(state) {
-  try {
-    localStorage.setItem(MASCOT_STATE_KEY, state)
-  } catch {
-    // localStorage unavailable (private browsing, etc.) — mascot position just won't persist
-  }
-}
+// Visits the later events first and settles on HOP_ORDER[0] (the season's first race),
+// so every fresh page load previews the full season before handing control to the user.
+const INTRO_TOUR = [...HOP_ORDER.slice(1), HOP_ORDER[0]]
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [isAnimating, setIsAnimating] = useState(false)
   const mascotRef = useRef(null)
-  const initialMascotState = useRef(loadMascotState()).current
 
   useEffect(() => {
     const onKeyDown = (e) => {
@@ -41,36 +24,22 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    let hasSeenOnboarding = true
-    try {
-      hasSeenOnboarding = localStorage.getItem(ONBOARDING_KEY) === 'true'
-    } catch {
-      // treat as seen — skip a tour we can't remember playing
-    }
-    if (hasSeenOnboarding) return
-
     let cancelled = false
     const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-    async function runOnboarding() {
+    async function runIntroTour() {
       setIsAnimating(true)
       await wait(700)
-      for (const state of ['FL', 'KY', 'CA']) {
+      for (const state of INTRO_TOUR) {
         if (cancelled) return
         await mascotRef.current.hopTo(state)
         if (cancelled) return
         await wait(500)
       }
-      try {
-        localStorage.setItem(ONBOARDING_KEY, 'true')
-        localStorage.setItem(MASCOT_STATE_KEY, 'CA')
-      } catch {
-        // best effort — tour will just replay next visit
-      }
-      setIsAnimating(false)
+      if (!cancelled) setIsAnimating(false)
     }
 
-    runOnboarding()
+    runIntroTour()
     return () => {
       cancelled = true
     }
@@ -80,7 +49,6 @@ export default function App() {
     if (isAnimating) return
     if (mascotRef.current.getCurrentState() !== event.state) {
       mascotRef.current.snapTo(event.state)
-      saveMascotState(event.state)
     }
     setSelectedEvent(event)
   }
@@ -91,7 +59,6 @@ export default function App() {
     const current = mascotRef.current.getCurrentState()
     const nextState = HOP_ORDER[(HOP_ORDER.indexOf(current) + 1) % HOP_ORDER.length]
     await mascotRef.current.hopTo(nextState)
-    saveMascotState(nextState)
     setTimeout(() => {
       setSelectedEvent(getEventByState(nextState))
       setIsAnimating(false)
@@ -128,7 +95,7 @@ export default function App() {
           </button>
         </div>
         <USMap onSelectEvent={handleMapSelectEvent}>
-          <Mascot ref={mascotRef} initialState={initialMascotState} />
+          <Mascot ref={mascotRef} initialState={HOP_ORDER[0]} />
         </USMap>
       </main>
 
