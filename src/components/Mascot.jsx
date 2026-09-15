@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { STATE_POSITIONS, getArcControl } from '../data/mapPoints.js'
-import { COLORS } from '../data/hrlData.js'
+import horseMascot from '../assets/horse-mascot.png'
 
 const HOP_DURATION = 550
 const HOP_HEIGHT = 9
@@ -85,43 +85,7 @@ const Mascot = forwardRef(function Mascot({ initialState }, ref) {
       style={{ left: `${pos.x}%`, top: `${pos.y}%`, transform }}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 170 100" className="mascot__svg">
-        {/* tail */}
-        <path
-          d="M45,32 C35,37 27,43 21,51 C15,61 13,71 15,83 C17,77 21,69 27,62 C33,54 40,45 47,37 Z"
-          fill={COLORS.brown}
-        />
-        {/* legs */}
-        <line x1="52" y1="65" x2="47" y2="96" stroke={COLORS.brown} strokeWidth="9" strokeLinecap="round" />
-        <line x1="60" y1="70" x2="58" y2="96" stroke={COLORS.brown} strokeWidth="9" strokeLinecap="round" />
-        <line x1="90" y1="65" x2="96" y2="96" stroke={COLORS.brown} strokeWidth="9" strokeLinecap="round" />
-        <line x1="99" y1="63" x2="104" y2="96" stroke={COLORS.brown} strokeWidth="9" strokeLinecap="round" />
-        {/* body, neck, head, ear and muzzle — a single silhouette */}
-        <path
-          d="M160,34
-             C157,28 153,24 148,22
-             C143,18 139,15 135,14
-             C132,13 130,12 128,12
-             L124,1 L120,11
-             C114,15 106,19 100,22
-             C93,25 87,28 82,32
-             C75,31.5 70,31 65,31
-             C58,31.5 52,31.5 47,32.5
-             C44,33.5 42,34.5 41,36
-             C39,39 38,42 38,46
-             C37,49 37,52 38,55
-             C39,59 41,62 43,64
-             C48,67 54,69 60,70
-             C67,71 75,71 82,69.5
-             C90,68 96,66 100,63
-             C103,60 105,57 107,54
-             C109,51 111,49 113,47
-             C117,45 122,45 126,44.5
-             C132,44 138,43.5 143,42
-             C149,40 154,38 160,34 Z"
-          fill={COLORS.brown}
-        />
-      </svg>
+      <img src={horseMascot} alt="" className="mascot__svg" />
     </div>
   )
 })
